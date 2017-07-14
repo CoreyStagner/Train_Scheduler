@@ -66,7 +66,7 @@ var trainFreq = "";
 database.ref().on("child_added", function(snapshot){
     log("Database Value Changed");
     if (snapshot.child("trainName").exists){
-// Do I need to do a for loop for entries here?
+        // Takes the Variables from the database and sets them into the Initial Values
         trainName = snapshot.val().trainName;
         trainDest = snapshot.val().trainDest;
         trainArrive = snapshot.val().trainArrive;
@@ -75,16 +75,20 @@ database.ref().on("child_added", function(snapshot){
     } // end if
     else{
         log("Child does not exist in database");
-    } // end else
-
+    } // end else    
     
-    
-// sandbox
+    // Sets up the Math for arrival time
+    // Takes the trainArrive value and converts it to Unix the takes the minutes value and 
+    // Divides by the trainFreq and saves that to remainder
     var remainder = moment().diff(moment.unix(trainArrive), "minutes") % trainFreq ;
+    // var minutes will be the difference of trainFreq and the remainder value and remainder value
     var minutes = trainFreq - remainder;
+    // logs remainder value
     console.log(remainder);
+    // Sets arrival to the minutes formated HH:MM am/pm
     var arrival = moment().add(minutes, "m").format("hh:mm A");
 
+    // Creates a new table row
     $("#trainTable>tbody").append("<tr><td>" + trainName + "</td><td>" + trainDest + "</td><td>" + trainFreq + "</td><td>" + arrival + "</td><td>" + minutes + "</td></tr>");
 
 }); // end database value change
@@ -155,5 +159,3 @@ $("#trainReset").on("click", function(){
     $("#freqInput").val("");
 
 })// end Reset onClick
-
-setTime
