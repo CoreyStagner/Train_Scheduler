@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+
+		<title>King's Cross Train Schedule Admin Page</title>
+		<meta name="author" content="Corey Stagner">
+		<meta name="description" content="View the train schedule for King's Cross Train Station">
+		
+		<!-- External Bootstrap Link -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+		<!-- BootSwatch External Link -->
+		<link rel="stylesheet" href="https://bootswatch.com/solar/bootstrap.min.css">
+
+		<!-- CSS External Link -->
+		<link rel="stylesheet" href="assets/style/style.css">
+
+		<!-- jQuery External Link -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+		<!-- Firebase External Link -->
+		<script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
+
+		<!-- MomentJS External Link -->
+		<script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+		
+		<!--[if lt IE 9]>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+		<![endif]-->
+
+	</head>
+
+	<body>
+		<div class="container-fluid" id="pageWrap">
+			<div class="container" id="headWrap">
+				<div class="row">
+					<div class="container col-md-12 content text-center">
+						<h1>Welcome to King's Cross Station Scheduling Administration</h1>
+					</div>
+				</div>
+			</div><!-- end #headWrap -->
+			<div class="container" id="bodyWrap">
+				<div class="row">
+					<div class="container col-md-12 content text-center">
+						<div class="row">
+							<h2>Add your own train here</h2>
+						</div>
+						<div class="row">
+							<div class="col-md-4">
+								<div class="row">
+								<br>
+									<h4>Train Name</h4>
+								</div>
+								<div class="row">
+									<input class="form-control" id="trainInput">
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="row">
+									<br>
+									<h4>Destination</h4>
+								</div>
+								<div class="row">
+									<input class="form-control" id="destInput">
+								</div>
+							</div>
+							<div class="col-md-2">
+								<div class="row">
+									<h4>First Arrival Time (Military Time)</h4>
+								</div>
+								<div class="row">
+									<input class="form-control" id="arriveInput">
+								</div>
+							</div>
+							<div class="col-md-2">
+								<div class="row">
+									<h4>Train Frequency (In Minutes)</h4>
+								</div>
+								<div class="row">
+									<input class="form-control" id="freqInput">
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-8">
+								<!-- Spacer Div. Figure out the Offset class in bootstrap -->
+							</div>
+							<div class="col-md-2">
+								<button class="btn btn-default btn-train" id="trainReset">Reset</button>
+							</div>
+							<div class="col-md-2">
+								<button class="btn btn-default btn-train" id="trainSubmit">Submit</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row content">
+					<div class="panel panel-primary">
+			            <div class="panel-heading">
+			              <h3 class="panel-title"><strong>Upcoming Trains</strong></h3>
+			            </div>
+			            <div class="panel-body">
+			              <table class="table table-hover" id='trainTable'>
+			                <thead>
+			                  <tr>
+			                    <th>Train Name</th>
+			                    <th>Destination</th>
+			                    <th>Frequency</th>
+			                    <th>Next Arrival</th>
+			                    <th>Minutes</th>
+			                  </tr>
+			                </thead>
+			                <tbody>
+			                </tbody>
+			              </table>
+			            </div>
+			          </div>
+				</div>
+			</div><!-- End #bodyWrap -->
+			<div class="container-fluid" id="footWrap">
+			
+				<!-- Insert Footer Here -->
+			
+			</div><!-- End #footWrap -->
+		</div><!-- End #pageWrap -->
+	<script src="assets/js/script.js"></script>
+	</body>
+</html>
